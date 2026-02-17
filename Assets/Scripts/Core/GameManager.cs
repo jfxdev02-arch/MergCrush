@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using MergCrush.Core;
 using MergCrush.Theme;
 using MergCrush.Level;
 using MergCrush.UI;

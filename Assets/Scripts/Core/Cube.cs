@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using MergCrush.Theme;
+using MergCrush.Level;
 
 namespace MergCrush.Core
 {
