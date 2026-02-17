@@ -32,17 +32,16 @@ namespace MergCrush.Editor
         public static void SetupMainMenuScene()
         {
             // Criar nova cena
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             
-            // Configurar camera
-            Camera mainCamera = Camera.main;
-            if (mainCamera != null)
-            {
-                mainCamera.backgroundColor = new Color(0.2f, 0.3f, 0.4f);
-                mainCamera.orthographic = true;
-                mainCamera.orthographicSize = 5.4f;
-                mainCamera.transform.position = new Vector3(0, 0, -10);
-            }
+            // Adicionar Camera
+            GameObject camObj = new GameObject("Main Camera");
+            Camera mainCamera = camObj.AddComponent<Camera>();
+            mainCamera.backgroundColor = new Color(0.2f, 0.3f, 0.4f);
+            mainCamera.orthographic = true;
+            mainCamera.orthographicSize = 5.4f;
+            camObj.transform.position = new Vector3(0, 0, -10);
+            camObj.tag = "MainCamera";
             
             // Criar Canvas
             GameObject canvasObj = CreateCanvas("MainCanvas");
@@ -110,17 +109,16 @@ namespace MergCrush.Editor
         [MenuItem("Tools/MergCrush/Setup Level Select Scene")]
         public static void SetupLevelSelectScene()
         {
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             
-            // Configurar camera
-            Camera mainCamera = Camera.main;
-            if (mainCamera != null)
-            {
-                mainCamera.backgroundColor = new Color(0.15f, 0.2f, 0.3f);
-                mainCamera.orthographic = true;
-                mainCamera.orthographicSize = 5.4f;
-                mainCamera.transform.position = new Vector3(0, 0, -10);
-            }
+            // Adicionar Camera
+            GameObject camObj = new GameObject("Main Camera");
+            Camera mainCamera = camObj.AddComponent<Camera>();
+            mainCamera.backgroundColor = new Color(0.15f, 0.2f, 0.3f);
+            mainCamera.orthographic = true;
+            mainCamera.orthographicSize = 5.4f;
+            camObj.transform.position = new Vector3(0, 0, -10);
+            camObj.tag = "MainCamera";
             
             // Criar Canvas
             GameObject canvasObj = CreateCanvas("MainCanvas");
@@ -185,17 +183,16 @@ namespace MergCrush.Editor
         [MenuItem("Tools/MergCrush/Setup Game Scene")]
         public static void SetupGameScene()
         {
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             
-            // Configurar camera
-            Camera mainCamera = Camera.main;
-            if (mainCamera != null)
-            {
-                mainCamera.backgroundColor = new Color(0.1f, 0.1f, 0.15f);
-                mainCamera.orthographic = true;
-                mainCamera.orthographicSize = 6f;
-                mainCamera.transform.position = new Vector3(0, 0, -10);
-            }
+            // Adicionar Camera
+            GameObject camObj = new GameObject("Main Camera");
+            Camera mainCamera = camObj.AddComponent<Camera>();
+            mainCamera.backgroundColor = new Color(0.1f, 0.1f, 0.15f);
+            mainCamera.orthographic = true;
+            mainCamera.orthographicSize = 6f;
+            camObj.transform.position = new Vector3(0, 0, -10);
+            camObj.tag = "MainCamera";
             
             // Criar managers
             GameObject managersObj = new GameObject("GameManagers");
@@ -474,7 +471,7 @@ namespace MergCrush.Editor
         
         private static void CreateEventSystem()
         {
-            if (Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
+            if (Object.FindAnyObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
             {
                 GameObject eventSystemObj = new GameObject("EventSystem");
                 eventSystemObj.AddComponent<UnityEngine.EventSystems.EventSystem>();
