@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using UnityEngine.UI;
 using MergCrush.Core;
 using MergCrush.Theme;
 using MergCrush.Level;
@@ -31,7 +32,7 @@ namespace MergCrush.Editor
         public static void SetupMainMenuScene()
         {
             // Criar nova cena
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene2D, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
             
             // Configurar camera
             Camera mainCamera = Camera.main;
@@ -109,7 +110,7 @@ namespace MergCrush.Editor
         [MenuItem("Tools/MergCrush/Setup Level Select Scene")]
         public static void SetupLevelSelectScene()
         {
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene2D, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
             
             // Configurar camera
             Camera mainCamera = Camera.main;
@@ -184,7 +185,7 @@ namespace MergCrush.Editor
         [MenuItem("Tools/MergCrush/Setup Game Scene")]
         public static void SetupGameScene()
         {
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene2D, NewSceneMode.Single);
+            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultScene, NewSceneMode.Single);
             
             // Configurar camera
             Camera mainCamera = Camera.main;
@@ -473,7 +474,7 @@ namespace MergCrush.Editor
         
         private static void CreateEventSystem()
         {
-            if (Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+            if (Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
             {
                 GameObject eventSystemObj = new GameObject("EventSystem");
                 eventSystemObj.AddComponent<UnityEngine.EventSystems.EventSystem>();
